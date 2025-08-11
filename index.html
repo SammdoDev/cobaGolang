@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Hello</title>
+</head>
+<body>
+  <h1>Fetch Data dari API Go di Vercel</h1>
+  <div id="result">Loading...</div>
+
+  <script>
+    async function fetchHello() {
+      try {
+        const res = await fetch("https://cobagolang.vercel.app/api/hello");
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+        const text = await res.text();
+        document.getElementById("result").innerText = text;
+      } catch (err) {
+        document.getElementById("result").innerText = "Error: " + err.message;
+      }
+    }
+    fetchHello();
+  </script>
+</body>
+</html>
